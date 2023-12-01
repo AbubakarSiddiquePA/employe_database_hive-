@@ -15,6 +15,8 @@ class _ListPageState extends State<ListPage> {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: topAppbar,
+      bottomNavigationBar: bottomnav,
+      body: body,
     );
   }
 }
@@ -26,11 +28,12 @@ final topAppbar = AppBar(
   actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.list))],
 );
 
-final bottomnav = Container(
+final bottomnav = SizedBox(
   height: 55.0,
   child: BottomAppBar(
     color: Colors.blueGrey,
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         IconButton(
           onPressed: () {},
@@ -48,3 +51,23 @@ final bottomnav = Container(
     ),
   ),
 );
+
+final body = Container(
+  child: ListView.builder(
+    scrollDirection: Axis.vertical,
+    itemBuilder: (context, index) {
+      return makeCard;
+    },
+  ),
+);
+
+final makeCard = Card(
+  elevation: 8.0,
+  margin: EdgeInsets.all(10),
+  child: Container(
+    decoration: BoxDecoration(color: Colors.white),
+    child: makeListTile,
+  ),
+);
+
+final makeListTile = ListTile();
